@@ -67,7 +67,6 @@ export default function Services() {
                     alt={s.alt}
                     placeholder="blur"
                     sizes="45vw"
-                    loading="eager"
                     className={`absolute inset-0 size-full object-cover transition-[clip-path,scale] duration-[1200ms] ease-[var(--ease-out-expo)] ${
                       i <= step ? "scale-100 [clip-path:inset(0_0_0_0)]" : "scale-110 [clip-path:inset(100%_0_0_0)]"
                     }`}

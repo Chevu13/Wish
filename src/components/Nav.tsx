@@ -42,7 +42,7 @@ export default function Nav() {
   useEffect(() => {
     const mm = gsap.matchMedia();
     mm.add(MOTION_OK, () => {
-      gsap.from(inner.current, { yPercent: -100, opacity: 0, duration: 1.4, delay: 3.0 });
+      gsap.from(inner.current, { yPercent: -100, opacity: 0, duration: 1.2, delay: 0.2 });
     });
     return () => mm.revert();
   }, []);
@@ -77,8 +77,8 @@ export default function Nav() {
     <>
       <header
         ref={bar}
-        className={`group/nav fixed inset-x-0 top-0 z-50 transition-[translate,background-color,backdrop-filter] duration-700 ease-[var(--ease-out-expo)] data-[hidden]:-translate-y-full ${
-          scrolled && !open ? "bg-ink/75 backdrop-blur-md" : ""
+        className={`group/nav fixed inset-x-0 top-0 z-50 transition-[translate,background-color] duration-700 ease-[var(--ease-out-expo)] data-[hidden]:-translate-y-full ${
+          scrolled && !open ? "bg-ink/92" : ""
         }`}
       >
         <nav ref={inner} className="flex items-center justify-between px-5 py-4 md:px-10 md:py-5" aria-label="Glavna navigacija">

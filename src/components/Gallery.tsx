@@ -54,7 +54,6 @@ export default function Gallery() {
       const setHeight = () => (s.style.height = `${distance() + window.innerHeight}px`);
       setHeight();
 
-      const skew = gsap.quickTo(t.querySelectorAll("figure"), "skewX", { duration: 0.6, ease: "power3" });
       const st = gsap.to(t, {
         x: () => -distance(),
         ease: "none",
@@ -65,8 +64,6 @@ export default function Gallery() {
           scrub: 0.6,
           invalidateOnRefresh: true,
           onRefreshInit: setHeight,
-          onUpdate: (self) => skew(gsap.utils.clamp(-4, 4, self.getVelocity() / -500)),
-          onScrubComplete: () => skew(0),
         },
       });
       gsap.to(s.querySelector(".gallery-bg"), {

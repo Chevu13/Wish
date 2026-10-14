@@ -18,7 +18,7 @@ export default function Motion() {
     const mm = gsap.matchMedia();
 
     mm.add(MOTION_OK, () => {
-      const lenis = new Lenis({ lerp: 0.09, anchors: { offset: 0 } });
+      const lenis = new Lenis({ lerp: 0.12, anchors: { offset: 0 } });
       (window as unknown as { lenis?: Lenis }).lenis = lenis;
       lenis.on("scroll", ScrollTrigger.update);
       const raf = (t: number) => lenis.raf(t * 1000);
