@@ -38,6 +38,8 @@ export default function Motion() {
                 yPercent: 110,
                 duration: 1.4,
                 stagger: 0.08,
+                // unmask after the reveal so descenders and carons are never clipped
+                onComplete: () => self.revert(),
                 scrollTrigger: { trigger: el, start: "top 88%", once: true },
               }),
           }),

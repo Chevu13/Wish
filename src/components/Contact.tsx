@@ -54,7 +54,7 @@ export default function Contact() {
         </div>
       </div>
 
-      <div className="mt-24 flex flex-col gap-6 border-t border-cream/10 py-8 text-xs text-cream/50 md:mt-36 md:flex-row md:items-center md:justify-between">
+      <div className="mt-16 flex flex-col gap-5 border-t border-cream/10 py-6 text-xs text-cream/50 md:mt-24 md:flex-row md:items-center md:justify-between">
         <ul className="flex flex-wrap gap-x-6 gap-y-2">
           {NAV.map((n) => (
             <li key={n.href}>
@@ -71,9 +71,6 @@ export default function Contact() {
         </a>
       </div>
 
-      <p aria-hidden className="display pointer-events-none -mb-[5vw] select-none text-center text-[40vw] italic leading-[0.8] text-gold/[0.08]">
-        <em>Wish</em>
-      </p>
     </footer>
   );
 }

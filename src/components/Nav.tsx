@@ -87,14 +87,13 @@ export default function Nav() {
           </a>
 
           <ul className="hidden items-center gap-9 lg:flex">
-            {NAV.map((n, i) => (
+            {NAV.map((n) => (
               <li key={n.href}>
                 <a
                   href={n.href}
                   onClick={(e) => (e.preventDefault(), go(n.href))}
                   className="group flex items-baseline gap-1.5 text-[0.82rem] text-cream/80 transition-colors hover:text-cream"
                 >
-                  <span className="font-serif text-[0.65rem] italic text-gold/70">0{i + 1}</span>
                   <span className="link-line">{n.label}</span>
                 </a>
               </li>
@@ -137,10 +136,9 @@ export default function Nav() {
         }`}
       >
         <ul className="flex flex-col gap-1">
-          {NAV.map((n, i) => (
+          {NAV.map((n) => (
             <li key={n.href} className="overflow-hidden border-b border-cream/10 py-2">
               <a href={n.href} onClick={(e) => (e.preventDefault(), go(n.href))} className="menu-item flex items-baseline gap-4">
-                <span className="font-serif text-sm italic text-gold">0{i + 1}</span>
                 <span className="display text-[13vw] text-cream">{n.label}</span>
               </a>
             </li>

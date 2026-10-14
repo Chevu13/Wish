@@ -26,6 +26,8 @@ export default function Hero() {
       const counterEl = q(".loader-count")[0];
 
       const tl = gsap.timeline({ onComplete: () => lenis?.start() });
+      // drop the masks once letters are in, so descenders (j) and carons (ž) are never clipped
+      const unmask = () => split.revert();
       tl.fromTo(q(".loader-logo"), { opacity: 0, scale: 0.94, filter: "blur(14px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1.4, ease: "power2.out" })
         .to(counter, { v: 100, duration: 1.5, ease: "power2.inOut", onUpdate: () => (counterEl.textContent = String(Math.round(counter.v)).padStart(3, "0")) }, 0)
         .to(q(".loader-logo"), { opacity: 0, scale: 1.04, duration: 0.6, ease: "power2.in" }, 1.6)
@@ -33,7 +35,7 @@ export default function Hero() {
         .set(q("[data-loader]"), { display: "none" })
         .fromTo(q(".hero-frame"), { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.8, ease: "expo.inOut" }, 2.0)
         .fromTo(q(".hero-frame img"), { scale: 1.35 }, { scale: 1, duration: 2.6, ease: "expo.out" }, 2.3)
-        .from(split.chars, { yPercent: 115, duration: 1.6, stagger: 0.045 }, 2.45)
+        .from(split.chars, { yPercent: 115, duration: 1.6, stagger: 0.045, onComplete: unmask }, 2.45)
         .from(q(".hero-fade"), { opacity: 0, y: 24, duration: 1.4, stagger: 0.1 }, 2.9)
         .from(q(".hero-bg"), { opacity: 0, duration: 2.4, ease: "power2.out" }, 1.9);
 
@@ -78,7 +80,7 @@ export default function Hero() {
             <span className="sr-only">Wish Catering — poželi želju, mi ćemo je pretvoriti u zalogaj.</span>
             <span aria-hidden className="hero-line block">Poželi</span>
             <span aria-hidden className="hero-line block pl-[12vw] text-gold md:pl-[7vw]">
-              <em>želju.</em>
+              <em className="[font-variation-settings:'SOFT'_50,'WONK'_0]">želju.</em>
             </span>
           </h1>
           <p className="hero-fade mt-8 max-w-md font-serif text-xl font-light italic leading-snug text-cream/90 md:mt-10 md:text-[1.7vw]">
