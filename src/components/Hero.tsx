@@ -34,12 +34,13 @@ export default function Hero() {
         .fromTo(q(".hero-frame"), { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.8, ease: "expo.inOut" }, 2.0)
         .fromTo(q(".hero-frame img"), { scale: 1.35 }, { scale: 1, duration: 2.6, ease: "expo.out" }, 2.3)
         .from(split.chars, { yPercent: 115, duration: 1.6, stagger: 0.045 }, 2.45)
-        .from(q(".hero-fade"), { opacity: 0, y: 24, duration: 1.4, stagger: 0.1 }, 2.9);
+        .from(q(".hero-fade"), { opacity: 0, y: 24, duration: 1.4, stagger: 0.1 }, 2.9)
+        .from(q(".hero-bg"), { opacity: 0, duration: 2.4, ease: "power2.out" }, 1.9);
 
       const scrub = { trigger: el, start: "top top", end: "bottom top", scrub: true };
-      gsap.to(q(".hero-line-a"), { xPercent: -14, ease: "none", scrollTrigger: scrub });
-      gsap.to(q(".hero-line-b"), { xPercent: 14, ease: "none", scrollTrigger: scrub });
-      gsap.to(q(".hero-frame-wrap"), { yPercent: 16, scale: 0.94, ease: "none", scrollTrigger: scrub });
+      gsap.to(q("h1"), { yPercent: -30, ease: "none", scrollTrigger: scrub });
+      gsap.to(q(".hero-frame-wrap"), { yPercent: 12, ease: "none", scrollTrigger: scrub });
+      gsap.to(q(".hero-bg"), { yPercent: 25, ease: "none", scrollTrigger: scrub });
 
       return () => {
         split.revert();
@@ -51,7 +52,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={root} id="top" className="relative flex min-h-[100svh] flex-col overflow-hidden bg-ink px-5 pb-6 pt-24 md:px-10 md:pb-8 md:pt-28">
+    <section ref={root} id="top" className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-ink px-5 pb-6 pt-28 md:px-10 md:pb-8 md:pt-32">
       {/* Preloader — the real neon sign sits on the exact same green, so it melts into the page */}
       <div data-loader aria-hidden className="fixed inset-0 z-[80] grid place-items-center bg-ink motion-reduce:hidden">
         <div className="loader-logo w-[min(70vw,380px)] opacity-0 [mask-image:radial-gradient(closest-side,#000_70%,transparent)]">
@@ -61,55 +62,63 @@ export default function Hero() {
         <span className="eyebrow absolute bottom-8 left-6 text-cream/50 md:bottom-12 md:left-10">Postavljamo sto…</span>
       </div>
 
-      <div className="hero-fade flex items-start justify-between text-cream/60">
-        <p className="eyebrow whitespace-nowrap">Ketering — Beograd</p>
-        <p className="eyebrow hidden md:block">44°49′ N · 20°27′ E</p>
-        <p className="eyebrow hidden sm:block">Proslave · Slatki stolovi</p>
+      {/* Atmosphere: the same sunset, blurred into light — the sharp photo below stays uncropped */}
+      <div aria-hidden className="hero-bg pointer-events-none absolute inset-0 -z-0">
+        <Image src={terasa} alt="" fill sizes="40vw" quality={75} className="scale-125 object-cover opacity-80 blur-3xl saturate-150" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_72%_30%,transparent_5%,color-mix(in_oklab,var(--color-ink)_70%,transparent)_45%,var(--color-ink)_85%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-ink" />
       </div>
 
-      <div className="relative my-8 grid flex-1 place-items-center md:my-4">
-        <h1 className="display pointer-events-none absolute inset-0 z-10 flex flex-col justify-center text-[25vw] text-cream md:text-[17.5vw]">
-          <span className="sr-only">Wish Catering — poželi želju, mi ćemo je pretvoriti u zalogaj.</span>
-          <span aria-hidden className="hero-line hero-line-a -translate-y-[78%] self-start md:-translate-y-[42%] md:pl-[2vw]">
-            Poželi
-          </span>
-          <span aria-hidden className="hero-line hero-line-b translate-y-[78%] self-end pr-[1vw] italic text-gold md:translate-y-[42%] md:pr-[2vw]">
-            <em>želju.</em>
-          </span>
-        </h1>
+      <div className="relative z-10 grid flex-1 items-center gap-10 md:grid-cols-12 md:gap-6">
+        <div className="md:col-span-7 md:pr-4">
+          <p className="hero-fade eyebrow mb-6 flex items-center gap-3 text-gold/80 md:mb-10">
+            <span className="h-px w-10 bg-gold/60" /> Ketering · Beograd
+          </p>
+          <h1 className="display relative z-10 text-[19vw] text-cream md:mr-[-9vw] md:text-[10.5vw]">
+            <span className="sr-only">Wish Catering — poželi želju, mi ćemo je pretvoriti u zalogaj.</span>
+            <span aria-hidden className="hero-line block">Poželi</span>
+            <span aria-hidden className="hero-line block pl-[12vw] text-gold md:pl-[7vw]">
+              <em>želju.</em>
+            </span>
+          </h1>
+          <p className="hero-fade mt-8 max-w-md font-serif text-xl font-light italic leading-snug text-cream/90 md:mt-10 md:text-[1.7vw]">
+            Mi ćemo je pretvoriti u zalogaj.
+          </p>
+          <div className="hero-fade mt-8 flex items-center gap-8 md:mt-12">
+            <CtaCircle />
+            <p className="max-w-[16rem] text-sm leading-relaxed text-cream/65">
+              Ketering za proslave, devojačke večeri i sve trenutke koji zaslužuju lepo postavljen sto.
+            </p>
+          </div>
+        </div>
 
-        <div className="hero-frame-wrap relative">
-          <div className="hero-frame relative aspect-[3/4] w-[64vw] overflow-hidden md:w-auto md:h-[min(64svh,44vw)]">
+        <figure className="hero-frame-wrap relative ml-auto w-[78vw] md:col-span-5 md:w-full md:max-w-[min(100%,calc(68svh*0.75))]">
+          <div className="hero-frame relative aspect-[3/4] overflow-hidden shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)]">
             <Image
               src={terasa}
               alt="Švedski sto pod suncobranom na mermernoj terasi u sumrak"
               preload
               placeholder="blur"
-              sizes="(min-width: 768px) 34vw, 64vw"
+              sizes="(min-width: 768px) 40vw, 78vw"
               className="size-full object-cover"
             />
           </div>
-          <p className="hero-fade eyebrow absolute left-full top-0 ml-4 hidden whitespace-nowrap text-cream/50 [writing-mode:vertical-rl] md:block">
-            Fig. 00 — Terasa u zlatni sat
-          </p>
-        </div>
+          <figcaption className="hero-fade mt-3 flex justify-between text-xs text-cream/55">
+            <span className="font-serif italic">Terasa u zlatni sat</span>
+            <span>Fig. 00</span>
+          </figcaption>
+        </figure>
       </div>
 
-      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-        <p className="hero-fade max-w-sm text-[0.95rem] leading-relaxed text-cream/75">
-          <span className="font-serif text-lg italic text-gold">Make a wish — we&apos;ll turn it into a dish.</span>
-          <br />
-          Beogradski ketering za proslave, devojačke večeri i sve trenutke koji zaslužuju lepo postavljen sto.
-        </p>
-        <div className="hero-fade flex items-end justify-between gap-6 md:justify-end md:gap-12">
-          <a href="#o-nama" className="eyebrow flex items-center gap-3 text-cream/60 hover:text-gold">
-            <span className="relative block h-10 w-px overflow-hidden bg-cream/20">
-              <span className="absolute inset-x-0 top-0 h-1/2 animate-[scrollcue_2s_ease-in-out_infinite] bg-gold" />
-            </span>
-            Skroluj
-          </a>
-          <CtaCircle />
-        </div>
+      <div className="hero-fade relative z-10 mt-10 flex items-center justify-between border-t border-cream/15 pt-5 text-cream/55">
+        <a href="#o-nama" className="eyebrow flex items-center gap-3 hover:text-gold">
+          <span className="relative block h-6 w-px overflow-hidden bg-cream/20">
+            <span className="absolute inset-x-0 top-0 h-1/2 animate-[scrollcue_2s_ease-in-out_infinite] bg-gold" />
+          </span>
+          Skroluj
+        </a>
+        <p className="eyebrow hidden md:block">Proslave · Švedski stolovi · Slatki stolovi</p>
+        <p className="eyebrow">Make a wish</p>
       </div>
     </section>
   );

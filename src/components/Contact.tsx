@@ -7,7 +7,7 @@ import logo from "@/assets/wish-logo.jpg";
 export default function Contact() {
   return (
     <footer id="kontakt" className="relative overflow-hidden bg-ink px-5 pt-24 md:px-10 md:pt-40">
-      <p className="eyebrow mb-6 text-gold/70">(05) — Kontakt</p>
+      <p className="eyebrow mb-6 text-gold/70">(04) — Kontakt</p>
 
       <div className="grid items-center gap-12 md:grid-cols-12 md:gap-6">
         <div className="md:col-span-7">

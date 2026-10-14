@@ -5,7 +5,6 @@ import Marquee from "@/components/Marquee";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import Gallery from "@/components/Gallery";
-import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 
 export default function Home() {
@@ -19,7 +18,6 @@ export default function Home() {
         <About />
         <Services />
         <Gallery />
-        <Experience />
       </main>
       <Contact />
     </>
