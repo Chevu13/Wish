@@ -14,7 +14,7 @@ export default function Contact() {
           <h2 data-split="lines" className="display text-[22vw] md:text-[13vw]">
             <em className="text-gold">Poželi.</em>
           </h2>
-          <p data-split="lines" className="display mt-4 text-[8vw] text-cream/90 md:text-[3.6vw]">
+          <p data-split="lines" className="display mt-4 text-[8vw] leading-none text-cream/90 md:text-[3.6vw]">
             Mi ćemo vašu želju pretvoriti u zalogaj.
           </p>
           <p data-reveal="fade" className="mt-8 max-w-md leading-relaxed text-cream/70">

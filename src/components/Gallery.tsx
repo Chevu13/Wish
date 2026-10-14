@@ -77,7 +77,7 @@ export default function Gallery() {
 
         <div
           ref={track}
-          className="snap-row relative flex gap-5 overflow-x-auto px-5 lg:h-[82svh] lg:items-stretch lg:gap-[6vw] lg:motion-safe:w-max lg:motion-safe:overflow-visible lg:px-10"
+          className="snap-row relative flex scroll-px-5 gap-5 overflow-x-auto px-5 lg:h-[82svh] lg:items-stretch lg:gap-[6vw] lg:motion-safe:w-max lg:motion-safe:overflow-visible lg:px-10"
         >
           <div className="flex w-[78vw] shrink-0 snap-start flex-col justify-between md:w-[44vw] lg:w-[34vw]">
             <p className="eyebrow text-moss">(03) — Galerija</p>

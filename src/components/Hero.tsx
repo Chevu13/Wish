@@ -62,9 +62,9 @@ export default function Hero() {
       </div>
 
       <div className="hero-fade flex items-start justify-between text-cream/60">
-        <p className="eyebrow">Ketering — Beograd</p>
+        <p className="eyebrow whitespace-nowrap">Ketering — Beograd</p>
         <p className="eyebrow hidden md:block">44°49′ N · 20°27′ E</p>
-        <p className="eyebrow">Proslave · Slatki stolovi</p>
+        <p className="eyebrow hidden sm:block">Proslave · Slatki stolovi</p>
       </div>
 
       <div className="relative my-8 grid flex-1 place-items-center md:my-4">
